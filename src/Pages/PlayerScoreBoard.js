@@ -50,8 +50,8 @@ const PlayerScoreBoard = (props) => {
         const db = getDatabase();
         
         //Sets city on firebase based on user click.
-        set(ref(db, `Scores/Users/Bob`), {
-            name: "Bob", score: props.right
+        set(ref(db, `Scores/Users/${props.userInput}`), {
+            name: `${props.userInput}` , score: props.right
         });
 
     }
@@ -69,7 +69,7 @@ const PlayerScoreBoard = (props) => {
 
       {renderSaying()}
       </div>
-      <button onClick={addScore}>Add Your Score to the LeaderBoard?</button>
+      <button className="scoreBoardButton" onClick={addScore}>Add Your Score to the LeaderBoard?</button>
       </>
   );
 };

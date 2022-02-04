@@ -6,10 +6,11 @@ import HomePage from './Pages/HomePage.js';
 import { Routes, Route, BrowserRouter } from 'react-router-dom'; 
 import BottomSiteSectionContainer from './Credits/BottomSiteSectionContainer';
 import NavBar from './NavBar/NavBar';
+import { useState } from "react";
 
 function App() {
-
   
+  const [userInput, setUserInput] = useState('');
 
   return (
     <div className="App">
@@ -18,8 +19,8 @@ function App() {
         <BrowserRouter>
         <NavBar/>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/QuizPage" element={<QuizPage />} />
+            <Route path="/" element={<HomePage userInput={userInput} setUserInput={setUserInput}/>} />
+          <Route path="/QuizPage" element={<QuizPage userInput={userInput} setUserInput={setUserInput}/>} />
           <Route path="/AboutPage" element={<AboutPage />} />
           <Route path="/Scoreboard" element={<Scoreboard />} />
        </Routes>

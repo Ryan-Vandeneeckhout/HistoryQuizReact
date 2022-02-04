@@ -3,7 +3,7 @@
   height: 150px;
 }
 .wrapper-Nav {
-  padding: 25px clamp(4rem, 0.625rem + 15vw, 8.5rem);
+  padding: 25px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,9 +19,10 @@
   text-shadow: 2px 1px black, 2px 1px black, 2px 1px black, 2px 1px black;
   color: white;
   margin: 0;
-  font-size: 44px;
+  font-size: clamp(2rem, 1.7662rem + 1.039vw, 3rem);
   text-transform: uppercase;
   font-family: Alegreya, sans-serif;
+  text-align: center;
 }
 .upperNav ul {
   list-style: none;
@@ -51,4 +52,22 @@
 
 .upperNav li a:hover {
   color: lightgray;
+}
+
+@media only screen and (max-width: 1000px) {
+  .upperNav {
+    flex-wrap: wrap;
+    height: 100%;
+    flex-direction: column;
+  }
+  .wrapper-Nav {
+    flex-direction: column;
+  }
+  .logo {
+    width: 100%;
+    order: 2;
+  }
+  .upperNav ul {
+    width: 100%;
+  }
 }

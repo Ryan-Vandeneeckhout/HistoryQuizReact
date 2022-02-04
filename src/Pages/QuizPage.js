@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Questions from "../QuestionsInputMap/Questions";
 import PlayerScoreBoard from "./PlayerScoreBoard";
 
-const QuizPage = () => {
+const QuizPage = (props) => {
   const [count, setCount] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [right, setRight] = useState(0);
@@ -13,7 +13,7 @@ const QuizPage = () => {
   const AudioThemeRef = useRef();
 
   let play = 0;
-
+  console.log(props.userInput); 
   const [questionsFixed, setQuestionsFixed] = useState(false);
   let QuestionsMap =
     QuestionsInputMap[Math.floor(Math.random() * QuestionsInputMap.length)];
@@ -35,7 +35,7 @@ const QuizPage = () => {
     ) {
       setQuestionsFixed(true);
     } else if (count === 5) {
-      return <PlayerScoreBoard right={right} />;
+      return <PlayerScoreBoard userInput={props.userInput} right={right} />;
     } else {
       return (
         <>
@@ -64,6 +64,7 @@ const QuizPage = () => {
     setTimeout(() => {
       setCount(count + 1);
       setRight(right + 1);
+      console.log(right);
     }, 2000);
 
     rightAnswerSound();
