@@ -49,7 +49,7 @@ const PlayerScoreBoard = (props) => {
         event.preventDefault();
         const db = getDatabase();
         
-        //Sets city on firebase based on user click.
+        //Sets Score for Individual User after Quiz on firebase based on user click.
         set(ref(db, `Scores/Users/${props.userInput}`), {
             name: `${props.userInput}` , score: props.right
         });

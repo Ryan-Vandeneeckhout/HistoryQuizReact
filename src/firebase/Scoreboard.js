@@ -10,7 +10,7 @@ const ScoreBoard = () => {
     const [scoresFirebase, setScoresFirebase] = useState([]);
 
     useEffect(() => {
-      
+      // Call to Firebase RealTime DB 
         const dbRootAddress = ref(database, `Scores/Users/`);
           onValue(
             dbRootAddress,
@@ -27,14 +27,15 @@ const ScoreBoard = () => {
         
     
     const renderMap = () => {
-            if (
+      if (
+              //Firebase Error HAndling 
                 scoresFirebase === null ||
                 scoresFirebase === undefined ||
                 scoresFirebase === "" ||
                 scoresFirebase.length === 0
             ) {
               return (
-                <h2 className='TripsActivitiesNull'>Trips List is Empty, Add Some Activities!</h2>
+                <h2 className='TripsActivitiesNull'>Something Went Wrong, Score List is Empty!</h2>
               )
             }
         
@@ -42,6 +43,8 @@ const ScoreBoard = () => {
 
 
               return (
+                  
+                /* Firebase Map */
                   
                 <ul className="dataBaseResultsList">
                   <h2>Quiz Global ScoreBoard</h2>
@@ -58,11 +61,12 @@ const ScoreBoard = () => {
             }
           };
     return (
-        <>
-            <section className='globalScoreBoard'>
-                {renderMap()}
-            </section>
-        </>
+      <>   
+        {/* Inital Render for Scoreboard Component*/}
+          <section className='globalScoreBoard'>
+            {renderMap()}
+        </section>
+      </>
        
 )
 }

@@ -6,7 +6,7 @@ const NavBar = () => {
 
     const [headerColor, setHeaderColor] = useState("transparent")
 
-
+//Dynamic Nav Change Function From Transparent to Black // 
     const listenScrollEvent = () => {
         window.scrollY > 10
           ? setHeaderColor("black")
@@ -18,6 +18,8 @@ const NavBar = () => {
     })
 
     return (
+
+        //Top of Site Nav// 
         <nav className="upperNav">
             <div style={{ backgroundColor: headerColor }} className="wrapper-Nav">
                 <div className='logo'>Comprehensive World History</div>

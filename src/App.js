@@ -15,15 +15,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header"> 
-       
+       {/*Upper Nav*/}
         <BrowserRouter>
         <NavBar/>
         <Routes>
-            <Route path="/" element={<HomePage userInput={userInput} setUserInput={setUserInput}/>} />
+          <Route path="/" element={<HomePage userInput={userInput} setUserInput={setUserInput}/>} />
           <Route path="/QuizPage" element={<QuizPage userInput={userInput} setUserInput={setUserInput}/>} />
           <Route path="/AboutPage" element={<AboutPage />} />
           <Route path="/Scoreboard" element={<Scoreboard />} />
-       </Routes>
+        </Routes>
         </BrowserRouter>     
         <BottomSiteSectionContainer/>
       </header>

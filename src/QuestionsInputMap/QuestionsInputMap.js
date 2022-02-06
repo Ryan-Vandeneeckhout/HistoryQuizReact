@@ -1,5 +1,7 @@
 export const QuestionsInputMap = [
 
+    // British Questions Map Custom // 
+
     {
         question: "Which Country Was Never a Formal Part of The British Empire?",
         choice1: "Sudan",

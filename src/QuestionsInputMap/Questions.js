@@ -8,13 +8,21 @@ const Questions = (props) => {
     const AnswerRef = useRef(null);
     const AudioRef = useRef();
 
+    // Change the props for the Question Input Map // 
+
     let D = QuestionsInputMap;
 
-    let Z = D.sort((a, b) => 0.5 - Math.random());
+    // Random Question // 
 
+    let Z = D.sort((a, b) => 0.5 - Math.random());
+    
+    // Return the First Question //
+    
     let Y = Z[0]; 
 
     const QuestionClicked = (event) => {
+
+        // On Button Click Check Answer to UserInput
         
         if (event.target.value === AnswerRef.current.value) {
             Z.shift();
@@ -29,6 +37,9 @@ const Questions = (props) => {
         }
        
     }
+
+    // Sound click // 
+
     const clickSoundPlay = () => {
 
         AudioRef.current.play();
@@ -41,6 +52,8 @@ const Questions = (props) => {
     
       }
     const renderQuestions = () => {
+
+        // Check to make sure Page Loads Correctly // 
 
         if (count === null || count === undefined || count.length === 0);
 
@@ -55,10 +68,12 @@ const Questions = (props) => {
                         <h2 className="quizQuestion">{Y.question}</h2>
                         </div>
                         <div className="buttonsContainer">
+                        {/* Buttons for Question*/}
                         <button onMouseEnter={clickSoundPlay} className="quizButtons" value={Y.choice1} onClick={QuestionClicked}>{Y.choice1}</button>
                         <button onMouseEnter={clickSoundPlay} onMouseLeave={clickSoundPause} className="quizButtons" value={Y.choice2} onClick={QuestionClicked}>{Y.choice2}</button>
                         <button onMouseEnter={clickSoundPlay} onMouseLeave={clickSoundPause} className="quizButtons" value={Y.choice3} onClick={QuestionClicked}>{Y.choice3}</button>
                         <button onMouseEnter={clickSoundPlay} onMouseLeave={clickSoundPause} className="quizButtons" value={Y.choice4} onClick={QuestionClicked}>{Y.choice4}</button>
+                        {/* Hidden Button for Questions/Answer Button*/}
                         <button className="quizAnswerButton" ref={AnswerRef} value={Y.answer} onClick={QuestionClicked}>{Y.answer}</button>
                         </div>
                        

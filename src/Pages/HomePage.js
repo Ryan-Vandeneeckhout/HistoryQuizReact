@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import "./HomePage.css";
 
-
+// Landing Page Section 
 const HomePage = (props) => {
+
+  //Form Submit for UserName Input
   const handleSubmit = (e) => {
 
     e.preventDefault()
   }
 
-
+//Function Call Userinput from APP.JS
   const handleInputChange = (event) => {
     event.preventDefault();
     props.setUserInput(event.target.value);
@@ -32,8 +34,7 @@ const HomePage = (props) => {
             </Link>
           </div>
         </div>
-          </div>
-       
+      </div>
     </section>
   );
 };

@@ -8,15 +8,14 @@ const QuizPage = (props) => {
   const [count, setCount] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [right, setRight] = useState(0);
+  const [questionsFixed, setQuestionsFixed] = useState(false);
   const AudioWrongRef = useRef();
   const AudioRightRef = useRef();
   const AudioThemeRef = useRef();
 
   let play = 0;
-  console.log(props.userInput); 
-  const [questionsFixed, setQuestionsFixed] = useState(false);
-  let QuestionsMap =
-    QuestionsInputMap[Math.floor(Math.random() * QuestionsInputMap.length)];
+  let QuestionsMap = QuestionsInputMap[Math.floor(Math.random() * QuestionsInputMap.length)];
+  //Theme Music Button Play // 
   const ThemePlayMusic = () => {
     if (play === 0) {
       AudioThemeRef.current.play();
@@ -26,6 +25,8 @@ const QuizPage = (props) => {
       play--;
     }
   };
+  
+  // Render Questions Function // 
   const renderQuestions = () => {
     if (
       questionsFixed === false ||
@@ -34,7 +35,9 @@ const QuizPage = (props) => {
       questionsFixed === null
     ) {
       setQuestionsFixed(true);
-    } else if (count === 5) {
+    }
+    //Call Invidual User Scoreboard after Quiz // 
+    else if (count === 5) {
       return <PlayerScoreBoard userInput={props.userInput} right={right} />;
     } else {
       return (
@@ -59,7 +62,7 @@ const QuizPage = (props) => {
       );
     }
   };
-
+// Question Right Function Handler / Button Clicked // 
   const questionRight = () => {
     setTimeout(() => {
       setCount(count + 1);
@@ -70,6 +73,7 @@ const QuizPage = (props) => {
     rightAnswerSound();
   };
 
+  // User Sound // 
   const rightAnswerSound = () => {
     AudioRightRef.current.play();
     AudioRightRef.current.Time = 0;
@@ -80,6 +84,7 @@ const QuizPage = (props) => {
     AudioWrongRef.current.Time = 0;
   };
 
+  // Question Wrong Function // 
   const questionWrong = () => {
     setTimeout(() => {
       setCount(count + 1);
@@ -94,6 +99,7 @@ const QuizPage = (props) => {
       <div className="quiz-Wrapper">
         <div className="quizQuestionContainer">{renderQuestions()}</div>
       </div>
+      {/*Sound Returns for Quiz Page*/}
       <audio ref={AudioWrongRef} src="./Assets/audio/wrong.wav"></audio>
       <audio ref={AudioRightRef} src="./Assets/audio/right.wav"></audio>
       <audio ref={AudioThemeRef} src="./Assets/audio/medieval.mp3"></audio>
